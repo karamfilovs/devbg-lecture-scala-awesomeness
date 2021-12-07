@@ -1,6 +1,6 @@
 package fp
 
-import com.google.gson.{Gson, GsonBuilder}
+import com.google.gson.GsonBuilder
 import fp.Playground.Animal
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -10,7 +10,7 @@ object Playground extends App {
 
   //Normal class
   class Person(val name: String) {
-    def something() = {
+    def something(): Unit = {
 
     }
   }
@@ -21,7 +21,7 @@ object Playground extends App {
 
   //Interface
   trait Animal {
-    def walk(distance: Double)
+    def walk(distance: Double): Unit
   }
 
   //Instance of person class
@@ -45,6 +45,7 @@ object Playground extends App {
 
   val aFuture = Future {
     //I have to wait for this code to execute
+    Thread.sleep(5000)
   }
 
   val human = new Human("Alex")
@@ -53,10 +54,10 @@ object Playground extends App {
 }
 
 class Human(val name: String) extends Animal {
-  override def walk (distance: Double) = {
+  override def walk(distance: Double): Unit = {
     println(s"The human walked $distance miles")
-    """ {
-      |"name":
-      |} """.stripMargin
   }
+
+  val android = new Human("Android")
+  android.walk(20)
 }

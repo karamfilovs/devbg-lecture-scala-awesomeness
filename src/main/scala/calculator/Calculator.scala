@@ -42,9 +42,9 @@ trait Animal {
   def run()
 }
 
-class Dog extends Animal {
+class Dog(val name: String) extends Animal {
   override def run(): Unit = {
-    println("The dog is running fast")
+    println("The dog wis running fast")
   }
 }
 
